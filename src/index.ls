@@ -33,7 +33,7 @@ module.exports = (engine, events) ->
   {query, add-class, listen} = (require \moros) engine, events
   {Eventful}                 = require \ekho
   {Togglable}                = require './core'
-  {find-anchors}             = (require './utils') engine
+  {find-anchors, target}     = (require './utils') engine
 
 
   
