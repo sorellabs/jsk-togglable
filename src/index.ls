@@ -33,32 +33,24 @@ module.exports = (engine, events) ->
   {query, add-class, listen} = (require \moros) engine, events
   {Eventful}                 = require \ekho
   {Togglable}                = require './core'
-  {target}                   = (require './utils') engine
+  {find-anchors}             = (require './utils') engine
 
 
   
   ### == Helpers =======================================================
-
-  #### Function mark-as-processed
-  # Marks a node as having been processed by the Togglable process.
-  #
-  # mark-as-processed :: xs:[Node*] -> xs
-  mark-as-processed = add-class \jskp-togglable
-
-
-  #### Function find-anchors
-  # Selects nodes that can be used as toggling anchors for a context
-  # node ``x``.
-  #
-  # find-anchors :: Node -> [Node]
-  find-anchors = (x) -> query 'a[href*="#jsk::"], [data-jsk-target]' x
-
 
   #### Function prevent-default
   # Prevents the default action of an event.
   #
   # prevent-default :: Event* -> IO ()
   ignore-event = (ev) -> ev.prevent-default!
+
+
+  #### Function mark-as-processed
+  # Marks a node as having been processed by the Togglable process.
+  #
+  # mark-as-processed :: xs:[Node*] -> xs
+  mark-as-processed = add-class \jskp-togglable
 
 
   #### Function flatten

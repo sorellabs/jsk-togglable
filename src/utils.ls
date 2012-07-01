@@ -29,18 +29,26 @@
 module.exports = (engine) ->
   
   ### == Dependencies ==================================================
-  {query-one} = (require \moros) engine
+  {query, query-one} = (require \moros) engine
 
 
   
   ### == Core implementation ===========================================
+
+  #### Function find-anchors
+  # Selects nodes that can be used as toggling anchors for a context
+  # node ``x``.
+  #
+  # find-anchors :: Node -> [Node]
+  find-anchors = (x) -> query 'a.jsk-anchor[href*="#"], [data-jsk-target]' x
+
 
   #### Function link-target
   # Returns the ID of a link's target.
   #
   # link-target :: Node -> Maybe String
   link-target = (x) ->
-    id = ((x.get-attribute \href) || '') .match /#jsk::(.*)/
+    id = ((x.get-attribute \href) || '') .match /#(.*)/
     id && id[1]
 
 
@@ -53,6 +61,8 @@ module.exports = (engine) ->
     query-one "##{id}"
 
 
+
+
   
   ### Exports ##########################################################
-  { link-target, target }
+  { link-target, target, find-anchors }
