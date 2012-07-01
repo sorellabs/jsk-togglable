@@ -9,6 +9,8 @@ Togglable
 ### Example
 
 
+
+
 ### Requirements and supported platforms
 
 This library makes use of a safely shim-able subset of ECMAScript 5
