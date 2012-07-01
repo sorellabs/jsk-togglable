@@ -8,7 +8,28 @@ Togglable
 
 ### Example
 
+A togglable element can be either an anchor with
+``href=#jsk::<element-id>`` or any other element with the attribute
+``data-jsk-target=<element-id>``:
 
+```html
+<div class="content">
+  <a href="#jsk::info">Show info()</a>
+  <div id="info">Some stuff here</div>
+  
+  <span data-jsk-target="win">Show window()</span>
+  <div id="win">Some window here</div>
+</div>
+```
+
+Then instantiate the ``jsk-togglable`` library (you can pass a selector
+engine and an event bridge if you're supporting older browsers), and run
+the processor on a top level element containing the anchors:
+
+```js
+var jskTogglable = require('jsk-togglable')(Sizzle)
+jskTogglable('.content')
+```
 
 
 ### Requirements and supported platforms
