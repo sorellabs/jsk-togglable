@@ -34,13 +34,24 @@ module.exports = (engine) ->
 
   
   ### == Core implementation ===========================================
+
+  #### Function link-target
+  # Returns the ID of a link's target.
+  #
+  # link-target :: Node -> Maybe String
   link-target = (x) ->
     id = ((x.get-attribute \href) || '') .match /#jsk::(.*)/
     id && id[1]
 
+
+  #### Function target
+  # Returns the element that is the target of an anchor element.
+  #
+  # target :: Node -> Node
   target = (x) ->
     id = (link-target x) || (x.get-attribute \data-jsk-target)
     query-one "##{id}"
+
 
   
   ### Exports ##########################################################
