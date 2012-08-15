@@ -2,7 +2,7 @@
   "author": "Quildreen Motta <quildreen@gmail.com> (http://killdream.github.com/)",
   "name": "jsk-togglable",
   "description": "Basic behaviours for togglable elements in a WebPage.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "keywords": [
     "ui",
     "togglable"
