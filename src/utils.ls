@@ -40,7 +40,7 @@ module.exports = (engine) ->
   # node ``x``.
   #
   # find-anchors :: Node -> [Node]
-  find-anchors = (x) -> query 'a.jsk-anchor[href*="#"], [data-jsk-target]' x
+  find-anchors = (x) -> query 'a.jsk-toggle[href*="#"], .toggle[data-jsk-target]' x
 
 
   #### Function link-target
