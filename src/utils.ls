@@ -61,6 +61,13 @@ module.exports = (engine) ->
     query-one "##{id}"
 
 
+  #### Function related
+  # Returns elements that are related to the anchor, but not direct targets.
+  #
+  # related :: Node -> [Node]
+  related = (x) ->
+    | x.has-attribute \data-jsk-related => query (x.get-attribute \data-jsk-related)
+    | otherwise                         => []
 
 
   

@@ -66,7 +66,7 @@ module.exports = (engine, events) ->
   # make-togglables :: Eventful, [Node] -> [Togglable]
   make-togglables = (parent, xs) -> xs.map (x) ->
     listen \click (ignore-event >> -> y.trigger \click), x
-    y = Togglable.make parent, [x, target x]
+    y = Togglable.make parent, [x, target x] +++ related x
 
 
   ### Exports ##########################################################
