@@ -29,10 +29,10 @@ module.exports = (engine, events) ->
 
   
   ### -- Dependencies --------------------------------------------------
-  {query, add-class, listen, concat-map} = (require 'doom') engine, events
-  {Eventful}                             = require 'ekho'
-  {Togglable}                            = require './core'
-  {find-anchors, target}                 = (require './utils') engine
+  {query, add-class, listen, map-concat, map} = (require 'doom') engine, events
+  {Eventful}                                  = require 'ekho'
+  {Togglable}                                 = require './core'
+  {find-anchors, target}                      = (require './utils') engine
 
 
   
@@ -63,7 +63,7 @@ module.exports = (engine, events) ->
   # Creates togglable instances for anchor nodes.
   #
   # :: Eventful, [Node] -> [Togglable]
-  make-togglables = (parent, xs) -> xs.map (x) ->
+  make-togglables = (parent, xs) -> xs |> map (x) ->
     listen \click (ignore-event >> -> y.trigger \click), x
     y = Togglable.make parent, [x, target x] ++ related x
 
@@ -77,6 +77,6 @@ module.exports = (engine, events) ->
   (selector) ->
     root = Eventful.make!
     root.on \click -> this.toggle!
-    (query selector) |> concat-map (x) ->
+    (query selector) |> map-concat (x) ->
       mark-as-processed x
       make-togglables root, find-anchors x
