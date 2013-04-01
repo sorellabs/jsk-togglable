@@ -72,4 +72,4 @@ module.exports = (engine) ->
 
   
   ### -- Exports -------------------------------------------------------
-  { link-target, target, find-anchors }
+  { link-target, target, find-anchors, related }

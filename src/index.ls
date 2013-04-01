@@ -32,7 +32,7 @@ module.exports = (engine, events) ->
   {query, add-class, listen, map-concat, map} = (require 'doom') engine, events
   {Eventful}                                  = require 'ekho'
   {Togglable}                                 = require './core'
-  {find-anchors, target}                      = (require './utils') engine
+  {find-anchors, target, related}             = (require './utils') engine
 
 
   
